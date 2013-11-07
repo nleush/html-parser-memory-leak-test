@@ -27,6 +27,13 @@ async.whilst(
             var mem = process.memoryUsage().heapUsed;
             console.log(count + ')', Math.round(mem / 1000000) +' MB', '('+mem+')');
 
+            if (!global.gc) {
+                console.error('Use "node --expose-gc script.js" to test with gc.')
+                return;
+            } else {
+                global.gc();
+            }
+
             setTimeout(callback, 1000);
 
         }).end(file);
