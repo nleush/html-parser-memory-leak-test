@@ -21,13 +21,17 @@ async.whilst(
             arr.push(file);
         }
 
-        // Mark array as garbage.
-        arr = null;
-
         // Log mem.
         console.log(count + ')', Math.round(process.memoryUsage().heapUsed / 1000000) +' MB');
 
-        callback();
+        if (!global.gc) {
+            console.error('Use "node --expose-gc script.js" to test with gc.')
+            return;
+        } else {
+            global.gc();
+        }
+
+        setTimeout(callback, 10);
 
     },
     function (err) {
