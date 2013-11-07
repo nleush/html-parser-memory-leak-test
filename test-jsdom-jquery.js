@@ -21,17 +21,25 @@ async.whilst(
             src: [jquery],
             done: function(error, window) {
 
-                // Log mem.
-                console.log(count + ')', Math.round(process.memoryUsage().heapUsed / 1000000) +' MB');
-
                 // Usage.
                 var $ = window.$;
                 console.log('test:', $('p').length);
 
+                // Log mem.
+                var mem = process.memoryUsage().heapUsed;
+                console.log(count + ')', Math.round(mem / 1000000) +' MB', '('+mem+')');
+
                 // Free mem.
                 window.close();
 
-                callback();
+                if (!global.gc) {
+                    console.error('Use "node --expose-gc script.js" to test with gc.')
+                    return;
+                } else {
+                    global.gc();
+                }
+
+                setTimeout(callback, 1000);
             }
         });
 
