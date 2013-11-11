@@ -4,9 +4,10 @@
     "version": "0.0.1",
 
     "dependencies": {
-        "jsdom":            "*",
+        "jsdom":            "0.3",
         "cheerio":          "*",
         "async":            "*",
-        "readabilitySAX":   "*"
+        "readabilitySAX":   "*",
+        "iframely-readability":      "git://github.com/itteco/node-readability.git"
     }
 }
