@@ -8,6 +8,7 @@
         "cheerio":          "*",
         "async":            "*",
         "readabilitySAX":   "*",
+        "jquery":           "*",
         "iframely-readability":      "git://github.com/itteco/node-readability.git"
     }
 }

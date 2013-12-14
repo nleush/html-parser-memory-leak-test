@@ -1,7 +1,6 @@
 var jsdom = require('jsdom');
 var fs = require('fs');
 var async = require('async');
-var util = require('util');
 
 var file = fs.readFileSync('./test.html').toString();
 

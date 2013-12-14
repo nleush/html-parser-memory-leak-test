@@ -39,7 +39,7 @@ async.whilst(
                     global.gc();
                 }
 
-                setTimeout(callback, 1000);
+                setTimeout(callback, 100);
             }
         });
 
